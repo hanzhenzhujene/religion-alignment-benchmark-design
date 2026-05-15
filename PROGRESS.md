@@ -10,7 +10,7 @@
 
 ## Next Steps
 
-- Create the public GitHub repository `religion-benchmark-artifacts`.
+- Rename the public GitHub repository to `religion-alignment-benchmark-design`.
 - Push this local package to GitHub.
 - Enable GitHub Pages from the `main` branch root.
 - Confirm the public website URL loads successfully.

@@ -1,4 +1,4 @@
-# Religion Benchmark Artifacts
+# Religion Alignment Benchmark Design
 
 This repository is a public artifact and progress log for the religion benchmark / benchmarking project.
 
@@ -6,7 +6,7 @@ This repository is a public artifact and progress log for the religion benchmark
 
 The deployable website entrypoint is [index.html](index.html). After GitHub Pages is enabled, it should be available at:
 
-https://hanzhenzhujene.github.io/religion-benchmark-artifacts/
+https://hanzhenzhujene.github.io/religion-alignment-benchmark-design/
 
 ## Artifacts
 
