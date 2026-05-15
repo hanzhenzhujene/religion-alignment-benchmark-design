@@ -23,11 +23,14 @@ h1 { font-size: 28px; font-weight: 600; line-height: 1.3; color: #111; margin-bo
 .repo-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .repo-links a { display: block; min-height: 44px; padding: 10px 12px; border: 1px solid #E8E5DF; border-radius: 6px; color: #103F59; background: #F2F8FB; font-size: 13px; font-weight: 600; line-height: 1.35; text-decoration: none; overflow-wrap: anywhere; }
 .repo-links a:hover { border-color: #A9CFE2; background: #E8F4FA; }
-.stepper { display: flex; gap: 0; margin-bottom: 48px; background: white; border: 1px solid #E8E5DF; border-radius: 10px; overflow: hidden; }
-.step-pip { flex: 1; padding: 14px 10px; text-align: center; border-right: 1px solid #E8E5DF; }
-.step-pip:last-child { border-right: none; }
-.step-pip .num { width: 28px; height: 28px; border-radius: 50%; background: #F1EFE8; color: #444; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px; }
-.step-pip .label { font-size: 11px; color: #888; line-height: 1.3; }
+.stepper { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin-bottom: 48px; position: relative; }
+.stepper::before { content: ""; position: absolute; top: 27px; left: 7%; right: 7%; height: 2px; background: #D8D4CB; z-index: 0; }
+.step-pip { min-height: 112px; padding: 12px 8px 10px; text-align: center; background: white; border: 1px solid #E8E5DF; border-radius: 8px; position: relative; z-index: 1; }
+.step-pip::after { content: ""; position: absolute; top: 22px; right: -11px; width: 10px; height: 10px; border-top: 2px solid #D8D4CB; border-right: 2px solid #D8D4CB; transform: rotate(45deg); background: #F7F6F3; }
+.step-pip:last-child::after { display: none; }
+.step-pip .num { width: 28px; height: 28px; border-radius: 50%; background: #1a1a1a; color: white; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+.step-pip .label { font-size: 12px; font-weight: 600; color: #222; line-height: 1.25; margin-bottom: 5px; }
+.step-pip .logic { font-size: 10px; color: #777; line-height: 1.35; }
 .section { margin-bottom: 44px; }
 .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
 .section-num { width: 36px; height: 36px; border-radius: 50%; background: #1a1a1a; color: white; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -36,6 +39,7 @@ h1 { font-size: 28px; font-weight: 600; line-height: 1.3; color: #111; margin-bo
 .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; padding-left: 50px; }
 .compare-box { padding: 14px 16px; border-radius: 8px; }
 .compare-box .label { font-size: 10px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 6px; }
+.compare-box .label a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .compare-box p { font-size: 13px; line-height: 1.5; }
 .box-purple { background: #EEEDFE; }
 .box-purple .label { color: #3C3489; }
@@ -102,8 +106,11 @@ h1 { font-size: 28px; font-weight: 600; line-height: 1.3; color: #111; margin-bo
 .footer p { font-size: 12px; color: #aaa; }
 @media (max-width: 600px) {
   .principles-grid, .compare, .metrics-grid, .repo-links { grid-template-columns: 1fr; }
-  .stepper { flex-wrap: wrap; }
-  .step-pip { flex: 0 0 25%; border-bottom: 1px solid #E8E5DF; }
+  .stepper { grid-template-columns: 1fr; gap: 10px; }
+  .stepper::before { top: 22px; bottom: 22px; left: 18px; right: auto; width: 2px; height: auto; }
+  .step-pip { min-height: 0; padding: 12px 14px 12px 48px; text-align: left; }
+  .step-pip::after { top: auto; right: auto; left: 14px; bottom: -11px; transform: rotate(135deg); background: #F7F6F3; }
+  .step-pip .num { position: absolute; left: 8px; top: 11px; margin: 0; }
 }
 </style>
 </head>
@@ -134,14 +141,14 @@ h1 { font-size: 28px; font-weight: 600; line-height: 1.3; color: #111; margin-bo
     </div>
   </div>
 
-  <div class="stepper">
-    <div class="step-pip"><div class="num">1</div><div class="label">Lock principles</div></div>
-    <div class="step-pip"><div class="num">2</div><div class="label">Generate prompts</div></div>
-    <div class="step-pip"><div class="num">3</div><div class="label">Define conditions</div></div>
-    <div class="step-pip"><div class="num">4</div><div class="label">Write rubric</div></div>
-    <div class="step-pip"><div class="num">5</div><div class="label">Validate judges</div></div>
-    <div class="step-pip"><div class="num">6</div><div class="label">Run &amp; aggregate</div></div>
-    <div class="step-pip"><div class="num">7</div><div class="label">Ablate</div></div>
+  <div class="stepper" aria-label="Benchmark design workflow">
+    <div class="step-pip"><div class="num">1</div><div class="label">Lock principles</div><div class="logic">define what counts</div></div>
+    <div class="step-pip"><div class="num">2</div><div class="label">Generate prompts</div><div class="logic">turn principles into tests</div></div>
+    <div class="step-pip"><div class="num">3</div><div class="label">Define conditions</div><div class="logic">compare baseline and steering</div></div>
+    <div class="step-pip"><div class="num">4</div><div class="label">Write rubric</div><div class="logic">make scoring explicit</div></div>
+    <div class="step-pip"><div class="num">5</div><div class="label">Validate judges</div><div class="logic">check scoring reliability</div></div>
+    <div class="step-pip"><div class="num">6</div><div class="label">Run &amp; aggregate</div><div class="logic">estimate model behavior</div></div>
+    <div class="step-pip"><div class="num">7</div><div class="label">Ablate</div><div class="logic">stress-test conclusions</div></div>
   </div>
 
   <div class="section">
@@ -150,12 +157,12 @@ h1 { font-size: 28px; font-weight: 600; line-height: 1.3; color: #111; margin-bo
 
     <div class="compare">
       <div class="compare-box box-purple">
-        <div class="label">HumaneBench</div>
-        <p>8 humane-technology principles (respect-user-attention, enable-meaningful-choices, …)</p>
+        <div class="label"><a href="https://github.com/buildinghumanetech/humanebench">HumaneBench</a></div>
+        <p>Source framework: 8 humane-technology principles (respect-user-attention, enable-meaningful-choices, ...)</p>
       </div>
       <div class="compare-box box-teal">
-        <div class="label">Christian benchmark</div>
-        <p>8 principles from Thomistic virtue ethics and classical Christian doctrine</p>
+        <div class="label">Christian benchmark: example design</div>
+        <p>Worked example: 8 principles from Thomistic virtue ethics and classical Christian doctrine</p>
       </div>
     </div>
 
