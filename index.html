@@ -18,6 +18,13 @@ h1 { font-size: 28px; font-weight: 600; line-height: 1.3; color: #111; margin-bo
 .repo-summary { background: #fff; border: 1px solid #E8E5DF; border-radius: 8px; padding: 18px; margin: -18px 0 36px; }
 .repo-summary h2 { font-size: 16px; font-weight: 600; color: #111; margin-bottom: 6px; }
 .repo-summary p { font-size: 13px; color: #666; line-height: 1.6; }
+.featured-doc { display: block; margin: 16px 0 14px; padding: 16px 18px; border: 2px solid #1a1a1a; border-radius: 8px; background: #FFF7D8; color: #171303; text-decoration: none; }
+.featured-doc:hover { background: #FFF1BD; }
+.featured-doc .fd-topline { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.featured-doc .fd-label { font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; color: #111; }
+.featured-doc .fd-date { font-size: 11px; font-weight: 700; color: #584A16; background: white; border: 1px solid #E6D27A; border-radius: 4px; padding: 2px 7px; }
+.featured-doc .fd-title { font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.featured-doc .fd-desc { font-size: 13px; color: #4A3B07; line-height: 1.5; }
 .repo-meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
 .repo-meta span { font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #584A16; background: #F6EDC3; padding: 4px 9px; border-radius: 4px; }
 .repo-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
@@ -129,9 +136,17 @@ h1 { font-size: 28px; font-weight: 600; line-height: 1.3; color: #111; margin-bo
   <div class="repo-summary" id="artifacts">
     <h2>Artifact and progress log</h2>
     <p>This website packages the current religion benchmark design guide together with the working documents and slide artifacts for the benchmarking project.</p>
+    <a class="featured-doc" href="https://docs.google.com/document/d/1SE_G9Rn9VlqDm7wtM9VoLhehy53z_tufTJDNEc94tN0/edit?usp=sharing">
+      <div class="fd-topline">
+        <span class="fd-label">Brainstorm doc</span>
+        <span class="fd-date">2026-05-20</span>
+      </div>
+      <div class="fd-title">Ideas on Multi-faith &amp; Christian Values Alignment Benchmark</div>
+      <div class="fd-desc">Current priority note for expanding the benchmark design across multi-faith and Christian values-alignment directions.</div>
+    </a>
     <div class="repo-meta">
       <span>Public repo package</span>
-      <span>Updated 2026-05-15</span>
+      <span>Updated 2026-05-20</span>
     </div>
     <div class="repo-links">
       <a href="artifacts/religion_benchmark_clean_working_doc.docx">Clean working document</a>
